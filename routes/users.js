@@ -1,5 +1,5 @@
 const usersRouter = require('express').Router();
-const User = require('../models/movie');
+const User = require('../models/user');
 
 usersRouter.get('/', (req, res) => {
   const { language } = req.query;
@@ -16,7 +16,7 @@ usersRouter.get('/', (req, res) => {
 usersRouter.get('/:id', (req, res) => {
   User.findOne(req.params.id)
     .then((user) => {
-      if (user) res.json(movie);
+      if (user) res.json(user);
       else res.status(404).send('User not found');
     })
     .catch((err) => {
